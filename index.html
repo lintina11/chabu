@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁-茶蔀</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            /* outline: 1px solid red; */
+        }
+        body{
+            background-color: #f3f3f3;
+            font-size: 16px;
+        }
+        a{
+            text-decoration: none;
+        }
+        h2{
+            font-weight: 400;
+            font-size: 1.5em;
+            padding-left: calc(11vw + 2em);
+            position: relative;
+            letter-spacing: .1em;
+            margin-bottom: 5vh;
+        }
+        h2::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12vw;
+            height: 100%;
+        }
+
+
+
+
+        /* 選單列 */
+        header{
+            padding: 0 11vw;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+        }
+        header .logo{
+            width: 10%;
+        }
+        header .logo img{
+            width: 100%;
+        }
+        header .menu{
+            margin-left: auto;
+        }
+        header .menu a{
+            color: #707070;
+            padding: 0 2em;
+            transition: .3s;
+        }
+        header .menu a:hover{
+            color: #EEA346;
+            display: inline-block;
+            transform: translatey(-2px);
+        }
+        header .log-in a{
+            color: #fff;
+            padding: .3em 2em;
+            background-color: #EEA346;
+            border-radius: 50px;
+            transition: .5s;
+        }
+        header .log-in a:hover{
+            color: #EEA346;
+            background-color: #fff;
+        }
+        /* banner */
+        .banner{
+            width: 100%;
+        }
+        .banner img{
+            width: 100%;
+            vertical-align: middle;
+        }
+        /* 最新消息 */
+        .news{
+            background:url(pic/news-bg.png) no-repeat;
+            background-size: 100% 100%;
+            padding: 8vh 0 40vh;
+        }
+        .news h2{
+            color:#966A52;
+        }
+        .news h2::before{
+            background-color: #966a52;
+        }
+        .news .container{
+            width: 78vw;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        .news .container:after{
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100px;
+            background-color: #ccc;
+            bottom: 0;
+            left: 50%; 
+            right: 50%;
+        }
+        .news .container .item{
+            width: 43%;
+            padding-left: 2%;
+        }
+        .news .date{
+            color: #2C4800;
+            font-size: 1.3em;
+            line-height: 3;
+        }
+        .news .container .item .pic{
+            width: 95%;
+            box-shadow: 0 3px 6px #ccc;
+            overflow: hidden;
+        }
+        .news .container .item .pic img{
+            width: 100%;
+            vertical-align: middle;
+        }
+        .news .container .item .pic:hover img{
+            transform: scale(1.1);
+            transition: 5s;
+        }
+        .news .item h5{
+            font-size: 1.5em;
+            color: #555;
+            font-weight: 400;
+            line-height: 4;
+        }
+        .news .item h5::before,.news .item h5::after{
+            content: "✣";
+        }
+        .news .item p{
+            font-size: 1em;
+            color: #707070;
+            padding-right: 30%;
+            line-height: 2.5;
+        }
+        .news .item a{
+            color: #966A52;
+            font-size: 1em;
+            display: block;
+            margin: 2em 0;
+        }
+        .news .item a:hover{
+            color: #966A5280;
+        }
+
+        /* outside link */
+        .outside_link h3{
+            color: #333;
+            font-size: 1.8em;
+            padding: 10vh 8vw;
+        }
+        .outside_link .container{
+            background-color: #EBE6E3;
+            padding: 0 15vw;
+            margin: 0 auto;
+            box-shadow: 0 3px 5px rgba( 100, 100, 100, .3);
+        }
+        .outside_link .item{
+            display: flex;
+        }
+        .outside_link .ubereat{
+            flex-direction: row-reverse;
+        }
+        .outside_link .txt{
+            flex-grow: 1;
+        }
+        .outside_link .title{
+            display: flex;
+            justify-content: center;
+            margin-top: 15%;
+        }
+        .outside_link .title img{
+            flex-shrink: 0;
+        }
+        .outside_link .title h4{
+            line-height: 3;
+            padding-left: 1em;
+        }
+        .outside_link .txt p{
+            color: #888;
+            line-height: 1.6;
+            padding: 5% 10%;
+        }
+        .outside_link .pic{
+            flex-grow: 1;
+        }
+        .outside_link .pic img{
+            width: 100%;
+            vertical-align: middle;
+        }
+        .outside_link .item a{
+            display: block;
+            width: 30%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .outside_link .line a{
+            color: #fff;
+            background-color: #02C501;
+            line-height: 2;
+            border-radius: 10px;
+        }
+
+
+        /* 精選商品 */
+        .product{
+            background-color: #fff;
+            padding: 10vh 0;
+        }
+        .product h2{
+            color: #eea347;
+            margin-bottom: 15vh;
+        }
+        .product h2::before{
+            background-color: #eea347;
+        }
+        .product .pic img{
+            width: 200px;
+        }
+
+        .product .canned_tea{
+            background-color: #6F5938;
+        }
+        .product .pancake{
+            background-color: #6B7181;
+        }
+        .product .item .container{
+            display: flex;
+            margin-left: 10%;
+            margin-bottom: 5%;
+            padding: 80px 0;
+        }
+        .product .item .txt{
+            color: #fff;
+            padding: 2em;
+            border-bottom: 2px solid #ccc;
+        }
+        .product .item .txt h3{
+            font-size: 1.8em;
+            letter-spacing: 3px;
+            margin-bottom: .5em;
+        }
+        .product .item .txt p{
+            letter-spacing: 3px;
+            margin-bottom: 3em;
+        }
+        .product .item .txt a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: .8em 2.5em;
+            border: 2px solid #fff;
+            border-radius: 50px;
+        }
+        .product .item .txt a:hover{
+            background-color: rgba(255,255,255,0.2);
+            transition: .5s;
+        }
+        .product .product-group{
+            flex-grow: 1;
+            overflow: hidden;
+            border-bottom: 2px solid #ccc;
+        }
+        .product .product-group .pic{
+            float: left;
+            margin-left: 5%;
+            /* margin: 0 10%; */
+        }
+
+        /* about */
+        .about{
+            padding: 8vh 0 20vh;
+            background-color: #eee;
+            background: url(pic/about_bg@2x.png);
+        }
+        .about h2{
+            color:#2C4800;
+        }
+        .about h2::before{
+            background-color: #2C4800;
+        }
+        .about .container{
+            width: 80%;
+            margin: 0 auto;
+        }
+        .about h3{
+            color: #777;
+            font-weight: 400;
+            font-size: 1.2em;
+            margin: 5em 0 3em;
+        }
+        .about .store_group{
+            display: flex;
+        }
+        .about .store{
+            width: 43%;
+        }
+        .about .store + .store{
+            margin-left: 14%;
+        }
+        .about .store .txt{
+            float: left;
+            width: 75%;
+            background-color: #fff;
+            padding: 30px;
+            margin-top: calc( -30px - 3.2em );
+        }
+        .about .store h5{
+            color: #333;
+            font-weight: 400;
+            font-size: 1.2em;
+            margin: 2em 0;
+        }
+        .about .store li{
+            color: #777;
+            font-size: 1em;
+            line-height: 2.5;
+            padding-left: 3em;
+        }
+        .about .store a{
+            color: #777;
+        }
+        .about .store ul li:nth-child(1){
+            background: url(pic/css_sprites.png) no-repeat;
+            background-size: 2em;
+            background-position: .5em -60px;
+        }
+        .about .store ul li:nth-child(2){
+            background: url(pic/css_sprites.png) no-repeat;
+            background-size: 2em;
+            background-position: .5em -28px;
+        }
+        .about .store ul li:nth-child(3){
+            background: url(pic/css_sprites.png) no-repeat;
+            background-size: 2em;
+            background-position: .5em -92px;
+        }
+        .about .store ul li:nth-child(4){
+            background: url(pic/css_sprites.png) no-repeat;
+            background-size: 2em;
+            background-position: .5em 5px;
+        }
+        .about .store .pic{
+            float: right;
+            width: 60%;
+        }
+        .about .store img{
+            width: 100%;
+            vertical-align: middle;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* footer */
+        footer{
+            color: #fff;
+            background-color: #2D354C;
+            padding: 10vh 0;
+        }
+        footer a{
+            color: #fff;
+            text-decoration: none;
+        }
+        footer .container{
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        footer ul{
+            width: 25.3%;
+            padding-left: 8%;
+            float: left;
+        }
+        footer h4{
+            font-size: 1.6em;
+            margin-bottom: 15%;
+        }
+        footer li{
+            font-size: 1.2em;
+            line-height: 2;
+        }
+        footer +p{
+            color: #fff;
+            background-color: #111;
+            text-align: center;
+            line-height: 3;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- 選單列 -->
+    <header>
+        <div class="logo">
+            <img src="pic/logo.png" alt="logo">
+        </div>
+        <nav class="menu">
+            <a href="#">最新消息</a>
+            <a href="#">ＭＥＮＵ</a>
+            <a href="#">精選商品</a>
+            <a href="#">關於茶蔀</a>
+        </nav>
+        <div class="log-in">
+            <a href="#">會員登入</a>
+        </div>
+    </header>
+    <!-- banner -->
+    <a href="#" class="banner">
+        <img src="pic/banner.png" alt="輪播商品圖">
+    </a>
+    <!-- 最新消息 -->
+    <div class="news">
+        <h2>最新消息</h2>
+        <div class="container">
+            <div class="item">
+                <div class="date">
+                    <p>2021.02.24</p>
+                </div>
+                <div class="pic">
+                    <img src="pic/news1.png" alt="春季新品嚐">
+                </div>
+                <div class="txt">
+                    <h5>
+                        春季新品嚐
+                    </h5>
+                    <p>
+                        純正小農牧場鮮乳舒芙蕾，冰涼口感與現泡熱茶展現春天般多彩的驚喜感。
+                    </p>
+                    <a href="#">
+                        了解詳情>>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <div class="date">
+                    <p>2021.02.19</p>
+                </div>
+                <div class="pic">
+                    <img src="pic/news2.png" alt="焦個好朋友">
+                </div>
+                <div class="txt">
+                    <h5>
+                        焦個好朋友
+                    </h5>
+                    <p>
+                        綿密濃郁烤布蕾新推出，樸實無華的外表背後，卻藏有能觸動心中最柔軟一隅的魔力，快來茶蔀焦朋友吧！
+                    </p>
+                    <a href="#">
+                        了解詳情>>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- outside link -->
+    <div class="outside_link">
+        <h3>貼近你我的生活圈</h3>
+        <div class="container">
+            <div class="item line">
+                <div class="txt">
+                    <div class="title">
+                        <img src="pic/line_icon.png" alt="">
+                        <h4>加入LINE官方帳號</h4>
+                    </div>
+                    <p>註冊會員將收到最新消息電子報，更有不定時優惠券發放！</p>
+                    <a href="#">加入好友</a>
+                </div>
+                <div class="pic">
+                    <img src="pic/line_pic.png" alt="">
+                </div>
+            </div>
+            <div class="item ubereat">
+                <div class="txt">
+                    <div class="title">
+                        <img src="pic/uber_icon.png" alt="">
+                        <h4>UberEats上訂餐囉！</h4>
+                    </div>
+                    <p>註冊會員將收到最新消息電子報，更有不定時優惠券發放！</p>
+                    <a href="#"><img src="pic/uber_btn.png" alt=""></a>
+                </div>
+                <div class="pic">
+                    <img src="pic/uber_pic.png" alt="">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- 精選商品 -->
+    <div class="product">
+        <h2>精選商品</h2>
+        <div class="item canned_tea">
+            <div class="container">
+                <div class="txt">
+                    <h3>罐裝茶系列</h3>
+                    <p>多款經典茶包罐裝組合，自由搭配。</p>
+                    <a href="#">去逛逛 > > </a>
+                </div>
+                <div class="product-group">
+                    <div class="pic">
+                        <img src="pic/cantea-gr.png" alt="">
+                    </div>
+                    <div class="pic">
+                        <img src="pic/cantea-yl.png" alt="">
+                    </div>
+                    <div class="pic">
+                        <img src="pic/cantea-gr.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item pancake">
+            <div class="container">
+                <div class="txt">
+                    <h3>甜點料理系列</h3>
+                    <p>簡單料理不求人，甜蜜滋味季節限定。</p>
+                    <a href="#">去逛逛 > > </a>
+                </div>
+                <div class="product-group">
+                    <div class="pic">
+                        <img src="pic/pancake-mk.png" alt="">
+                    </div>
+                    <div class="pic">
+                        <img src="pic/pancake-mk.png" alt="">
+                    </div>
+                    <div class="pic">
+                        <img src="pic/pancake-mk.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- about -->
+    <div class="about">
+        <h2>關於茶蔀</h2>
+        <div class="container">
+            <h3>店面資訊</h3>
+            <div class="store_group">
+                <div class="store store_taipei">
+                    <div class="pic">
+                        <img src="pic/store01.png" alt="">
+                    </div>
+                    <div class="txt">
+                        <h5>台北錦富店</h5>
+                        <ul>
+                            <li>台北市松山區富錦街90號</li>
+                            <li>＋886-2-3366-7789</li>
+                            <li>週一公休</li>
+                            <li><a href="#">查看Google Map</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="store store_taichung">
+                    <div class="pic">
+                        <img src="pic/store02.png" alt="">
+                    </div>
+                    <div class="txt">
+                        <h5>台中審計店</h5>
+                        <ul>
+                            <li>台中市西區中興街51號</li>
+                            <li>＋886-4-3366-7642</li>
+                            <li>週四公休</li>
+                            <li><a href="#">查看Google Map</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <ul class="ft_about">
+                <h4>認識茶蔀</h4>
+                <li><a href="#">品牌理念</a></li>
+                <li><a href="#">企業公告</a></li>
+                <li><a href="#">成為我們的夥伴</a></li>
+            </ul>
+            <ul class="ft_social">
+                <h4>追蹤社群</h4>
+                <li><a href="#">LINE</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+            <ul class="ft_contact">
+                <h4>聯絡我們</h4>
+                <li>＋886-2-0856-1312</li>
+                <li>Customer@cha-bu.com</li>
+                <li>週一至週五 10AM-6PM</li>
+            </ul>
+        </div>  
+    </footer>
+    <p>Copyright &copy lintina2021</p>
+
+
+
+
+
+
+    <!-- 置底 -->
+    <!-- <style>
+        .mockup{
+            width: 100%;
+        }
+        .mockup img{
+            width: 100%;
+        }
+    </style>
+    <div class="mockup">
+        <img src="Web 1280 – 1.png" alt="">
+    </div> -->
+
+
+
+
+    
+</body>
+</html>
